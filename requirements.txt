@@ -2,6 +2,6 @@ fastapi
 uvicorn
 pytest
 requests
-pytest
 pytest-xml
 httpx
+pytest_item_dict

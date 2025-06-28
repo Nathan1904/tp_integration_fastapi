@@ -3,5 +3,6 @@ uvicorn
 pytest
 requests
 pytest-xml
-httpx
 pytest_item_dict
+data-to-xml
+httpx

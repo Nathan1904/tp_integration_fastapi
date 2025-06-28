@@ -14,7 +14,7 @@ pipeline {
 
     stage('Run tests') {
       steps {
-        sh 'pytest --junitxml=test-results.xml'
+        sh 'PYTHONPATH=. pytest --junitxml=test-results.xml'
       }
     }
 

@@ -1,29 +1,20 @@
 pipeline {
-  agent any
-
-  environment {
-    VENV_DIR = ".venv"
+  agent {
+    docker {
+      image 'python:3.11'
+    }
   }
 
   stages {
-    stage('Install Python & Dependencies') {
+    stage('Install dependencies') {
       steps {
-        // Vérifie que pip est là, crée un environnement virtuel et installe les deps
-        sh '''
-          python -m venv $VENV_DIR
-          . $VENV_DIR/Scripts/activate
-          pip install --upgrade pip
-          pip install -r requirements.txt
-        '''
+        sh 'pip install -r requirements.txt'
       }
     }
 
-    stage('Run Unit Tests') {
+    stage('Run tests') {
       steps {
-        sh '''
-          . $VENV_DIR/Scripts/activate
-          pytest --junitxml=test-results.xml
-        '''
+        sh 'pytest --junitxml=test-results.xml'
       }
     }
 
@@ -31,15 +22,6 @@ pipeline {
       steps {
         junit 'test-results.xml'
       }
-    }
-  }
-
-  post {
-    always {
-      echo 'Pipeline terminée.'
-    }
-    failure {
-      echo 'Échec dans la pipeline.'
     }
   }
 }

@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="0" skipped="0" tests="1" time="0.451" timestamp="2025-06-28T12:19:21.107061+02:00" hostname="LAPTOP-BNSB64J8"><testcase classname="tests.test_main" name="test_ping" time="0.076" /></testsuite></testsuites>
